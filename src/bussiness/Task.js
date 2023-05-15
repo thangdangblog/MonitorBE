@@ -24,6 +24,25 @@ class Task {
             });
         })
     }
+
+    
+    getTop() {
+        const query = `SELECT * from tasks`;
+
+        this.database.connect();
+
+        return new Promise((resolve, reject) => {
+            this.database.connection.query(query, (error, results) => {
+                this.database.disconnect();
+                if (error) {
+                    console.error('Error inserting record:', error);
+                    return resolve(false);;
+                }
+                return resolve(true);
+            });
+        })
+    }
+
 }
 
 module.exports = Task;
