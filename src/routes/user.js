@@ -16,4 +16,16 @@ router.post('/', async (req, res) => {
     res.send(serviceActionResult);
 });
 
+router.get('/', async (req, res) => {
+    const code = req.body.code;
+    const name = req.body.name;
+
+    const user = new User();
+    const result = await user.list();
+
+    const serviceActionResult = new ServiceActionResult(result);
+
+    res.send(serviceActionResult);
+});
+
 module.exports = router;

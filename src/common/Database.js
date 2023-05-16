@@ -8,7 +8,7 @@ class Database {
         } else {
             this.connection = connection = mysql.createConnection({
                 host: 'localhost',
-                port: 3306, 
+                port: 3306,
                 user: 'root',
                 password: '12345678@Abc',
                 database: 'customize_job'
@@ -17,18 +17,20 @@ class Database {
     }
 
     connect() {
-        this.connection.connect((err) => {
-            if (err) {
-                console.error('Error connecting to MySQL database:', err);
-                return;
-            }
+        // return new Promise((r) => {
+        //     this.connection.connect((err) => {
+        //         if (err) {
+        //             console.error('Error connecting to MySQL database:', err);
+        //             return r(false);
+        //         }
 
-            console.log('Connected to MySQL database');
-        });
+        //         return r(true);
+        //     });
+        // })
     }
 
     disconnect() {
-        this.connection.end();
+        // this.connection.end();
     }
 }
 

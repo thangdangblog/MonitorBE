@@ -1,7 +1,13 @@
 class ServiceActionResult {
     constructor(data = null, success = true, errorCode = 0) {
         this.Data = data;
-        this.Success = success;
+
+        if(data) {
+            this.Success = true;
+        } else {
+            this.Success = false;
+        }
+
         this.ErrorCode = errorCode;
     }
 }

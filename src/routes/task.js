@@ -19,4 +19,29 @@ router.post('/', async (req, res) => {
     res.send(serviceActionResult);
 });
 
+
+router.post('/many', async (req, res) => {
+    const rows = req.body;
+
+    const task = new Task();
+    const result = await task.insertMany(rows);
+
+    const serviceActionResult = new ServiceActionResult(result);
+
+    res.send(serviceActionResult);
+});
+
+
+router.post('/top', async (req, res) => {
+    const FromDate = req.body.FromDate;
+    const ToDate = req.body.ToDate;
+
+    const task = new Task();
+    const result = await task.getPointsByUserAndDateRange(FromDate, ToDate);
+
+    const serviceActionResult = new ServiceActionResult(result);
+
+    res.send(serviceActionResult);
+});
+
 module.exports = router;
